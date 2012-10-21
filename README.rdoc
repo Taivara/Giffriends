@@ -6,3 +6,4 @@ setup as well as some general guidelines and best practices.
 
 - Adds home controller and index route
 - Flash messages display and checking in layout
+- Fixtures have been removed
