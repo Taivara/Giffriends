@@ -5,7 +5,7 @@ Trails::Application.configure do
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
@@ -52,7 +52,7 @@ Trails::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set default URL for mailer
-  config.action_mailer.default_url_options = { host: 'trails.net' }
+  config.action_mailer.default_url_options = { host: 'cert.trails.net' }
 
   # Enable threaded mode
   # config.threadsafe!

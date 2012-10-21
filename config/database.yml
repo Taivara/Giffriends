@@ -18,8 +18,20 @@ test:
   pool: 5
   timeout: 5000
 
+certification:
+  adapter: postgresql
+  database: trails_certification
+  host: localhost
+  username: trails
+  password: some_password
+  pool: 5
+  timeout: 5000
+
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: trails_production
+  host: localhost
+  username: trails
+  password: some_password
   pool: 5
   timeout: 5000

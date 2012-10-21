@@ -5,5 +5,8 @@ so clever, right?). The following describes what is contained in a default
 setup as well as some general guidelines and best practices.
 
 - Adds home controller and index route
-- Flash messages display and checking in layout
-- Fixtures have been removed
+- Adds Flash messages display and checking in layout
+- Removes fixtures
+- Adds certification environment
+- Updates default database configuration for all environments
+- Adds Common .gitignore exclusions
