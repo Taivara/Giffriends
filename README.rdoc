@@ -10,3 +10,4 @@ setup as well as some general guidelines and best practices.
 - Adds certification environment
 - Updates default database configuration for all environments
 - Adds Common .gitignore exclusions
+- Adds Devise auth and signup as well as User model
