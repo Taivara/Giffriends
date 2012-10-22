@@ -11,3 +11,13 @@ setup as well as some general guidelines and best practices.
 - Updates default database configuration for all environments
 - Adds Common .gitignore exclusions
 - Adds Devise auth and signup as well as User model
+- Adds i18n (internationalization) to views (devise-i18n-views gem used for
+the Devise views)
+
+
+Misc.
+
+By default devise views are not generated, if you want to generate them for
+customization use rails g devise:views, remember to provide proper
+internationalization for these views, you can grab the i18n versions of the
+templates here: https://github.com/mcasimir/devise-i18n-views/tree/master/app/views/devise

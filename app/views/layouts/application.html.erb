@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<% if user_signed_in? %>
+  <%= t(:signed_in_as) %> <strong><%= current_user.email %></strong>.
+  <%= link_to t(:edit_profile), edit_user_registration_path %> |
+  <%= link_to t(:sign_out), destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to t(:sign_up), new_user_registration_path %> |
+  <%= link_to t(:sign_in), new_user_session_path %>
+<% end %>
+
 <% if notice %>
 <p class="notice"><%= notice %></p>
 <% end %>
