@@ -13,6 +13,16 @@ setup as well as some general guidelines and best practices.
 - Adds Devise auth and signup as well as User model
 - Adds i18n (internationalization) to views (devise-i18n-views gem used for
 the Devise views)
+- Adds version dependencies to all gems in gemfile
+- Adds Factory Girl rails gem for fixtures
+- Adds User fixture with sequenced emails
+- Updates generator defaults to use factories and remove unneeded things
+
+
+Style Preferences:
+
+- Use single quotes unless doing string interpolation
+- Use Ruby 1.9 hash syntax; key: 'value' instead of the :key => 'value'
 
 
 Misc.
