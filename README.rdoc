@@ -4,13 +4,13 @@ Trails is Taivara's quick-start rails setup. (Taivara + Rails = Trails,
 so clever, right?). The following describes what is contained in a default
 setup as well as some general guidelines and best practices.
 
-- Adds home controller and index route
+- Adds home controller and index route with tests
 - Adds Flash messages display and checking in layout
 - Removes fixtures
 - Adds certification environment
 - Updates default database configuration for all environments
 - Adds Common .gitignore exclusions
-- Adds Devise auth and signup as well as User model
+- Adds Devise auth and signup as well as User model with
 - Adds i18n (internationalization) to views (devise-i18n-views gem used for
 the Devise views)
 - Adds version dependencies to all gems in gemfile
