@@ -58,5 +58,14 @@ module Trails
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Configure default generators
+    config.generators do |g|
+      g.stylesheets false
+      g.javascripts false
+      g.helper false
+      g.fixture_replacement :factory_girl
+    end
+
   end
 end

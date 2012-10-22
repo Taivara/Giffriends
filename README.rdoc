@@ -17,12 +17,14 @@ the Devise views)
 - Adds Factory Girl rails gem for fixtures
 - Adds User fixture with sequenced emails
 - Updates generator defaults to use factories and remove unneeded things
+- Adds some default seed data for testing
 
 
 Style Preferences:
 
 - Use single quotes unless doing string interpolation
 - Use Ruby 1.9 hash syntax; key: 'value' instead of the :key => 'value'
+- Use factories to DRY up seed data
 
 
 Misc.
