@@ -19,7 +19,10 @@ the Devise views)
 - Updates generator defaults to use factories and remove un-needed things
 - Adds some default seed data for testing
 - Adds common test helpers
-
+- Adds omniauth gem
+- Adds Facebook and Twitter login
+- Adds code for resolving multiple authentications
+- Adds controller for managing authentications
 
 Style Preferences:
 
