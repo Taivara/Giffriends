@@ -5,19 +5,20 @@ so clever, right?). The following describes what is contained in a default
 setup as well as some general guidelines and best practices.
 
 - Adds home controller and index route with tests
-- Adds Flash messages display and checking in layout
+- Adds Flash messages display and checking in layout with tests
 - Removes fixtures
 - Adds certification environment
 - Updates default database configuration for all environments
-- Adds Common .gitignore exclusions
-- Adds Devise auth and signup as well as User model with
+- Adds common .gitignore exclusions
+- Adds Devise auth and signup as well as user model
 - Adds i18n (internationalization) to views (devise-i18n-views gem used for
 the Devise views)
 - Adds version dependencies to all gems in gemfile
-- Adds Factory Girl rails gem for fixtures
-- Adds User fixture with sequenced emails
-- Updates generator defaults to use factories and remove unneeded things
+- Adds factory_girl_rails gem for fixtures
+- Adds user fixture with sequenced emails
+- Updates generator defaults to use factories and remove un-needed things
 - Adds some default seed data for testing
+- Adds common test helpers
 
 
 Style Preferences:

@@ -1,5 +1,8 @@
 Trails::Application.routes.draw do
-  devise_for :users
+
+  match '/auth/:provider/callback' => 'authentications#create'
+  devise_for :users, controllers: { registrations: 'registrations' }
+  resources :authentications
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
