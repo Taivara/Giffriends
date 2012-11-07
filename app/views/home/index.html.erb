@@ -1,1 +1,5 @@
-<h2><%= t :welcome %></h2>
+<% if signed_in? %>
+  <p>Content for signed in user goes here</p>
+<% else %>
+  <h2><%= t :welcome %></h2>
+<% end %>
