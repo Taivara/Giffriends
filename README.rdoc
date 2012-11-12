@@ -23,6 +23,8 @@ the Devise views)
 - Adds Facebook and Twitter login
 - Adds code for resolving multiple authentications
 - Adds controller for managing authentications
+- Adds controller for managing users
+- Adds roles table for tracking admins
 
 Style Preferences:
 
