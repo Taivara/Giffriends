@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   attr_accessor :current_password
 
   has_many :authentications
+  has_many :roles
 
   # Helper for user creation via omniauth
   def apply_omniauth(omniauth)
