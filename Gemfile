@@ -14,6 +14,8 @@ gem 'omniauth-twitter', '~> 0.0.13'
 
 group :testing do
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'ruby-prof', '~> 0.11.2'
+  gem 'guard-test', '~> 0.7.0'
 end
 
 # Gems used only for assets and not required
