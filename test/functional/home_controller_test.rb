@@ -35,7 +35,6 @@ class HomeControllerTest < ActionController::TestCase
     assert_select "a[href=#{new_user_session_path}]", true
     assert_select "a[href=#{edit_user_registration_path}]", false
     assert_select "a[href=#{destroy_user_session_path}]", false
-    assert_select "a[href=#{user_omniauth_authorize_path(:twitter)}]", true
     assert_select 'nav strong', false
   end
 
@@ -46,7 +45,6 @@ class HomeControllerTest < ActionController::TestCase
     assert_select "a[href=#{new_user_session_path}]", false
     assert_select "a[href=#{edit_user_registration_path}]", true
     assert_select "a[href=#{destroy_user_session_path}]", true
-    assert_select "a[href=#{user_omniauth_authorize_path(:twitter)}]", false
     assert_select 'nav strong', user.email
   end
 
