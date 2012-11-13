@@ -6,3 +6,6 @@ en:
   sign_in_with_a_service: "Sign in through one of these services"
   cancel_my_account: "Cancel my account"
   sign_up: "Sign up"
+  successfully_removed_authentication: "Successfully removed authentication"
+  signed_in_successfully: "Signed in successfully"
+  authentication_successful: "Authentication successful"
