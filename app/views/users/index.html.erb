@@ -1,11 +1,25 @@
 <h1>Listing users</h1>
 
+<%= search_form_for @search do |f| %>
+  <div>
+    <%= f.label :email_cont, t(:email) %>
+    <%= f.text_field :email_cont %>
+  </div>
+  <div>
+    <%= f.label :created_at_gteq, t(:created_between) %>
+    <%= f.date_select :created_at_gteq, {include_blank: true, default: nil} %>
+    <%= f.label :created_at_lteq, t(:and) %>
+    <%= f.date_select :created_at_lteq, {include_blank: true, default: nil}  %>
+  </div>
+  <%= f.submit t(:search) %>
+<% end %>
+
 <%= paginate @users %>
 
 <table>
   <tr>
-    <th><%= link_to 'Email', sort: 'email' %></th>
-    <th><%= link_to 'Created at', sort: 'created_at' %></th>
+    <th><%= sort_link(@search, :email) %></th>
+    <th><%= sort_link(@search, :created_at) %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,9 +29,10 @@
   <tr>
     <td><%= user.email %></td>
     <td><%= user.created_at.strftime("%m/%d/%y") %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to t(:show), user %></td>
+    <td><%= link_to t(:edit), edit_user_path(user) %></td>
+    <td><%= link_to t(:delete), user, method: :delete,
+                    data: { confirm: t(:are_you_sure) } %></td>
   </tr>
 <% end %>
 </table>

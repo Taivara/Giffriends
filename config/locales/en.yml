@@ -1,6 +1,9 @@
 en:
   delete: "Delete"
   update: "Update"
+  show: "Show"
+  edit: "Edit"
+  search: "Search"
   are_you_sure: "Are you sure?"
   views:
     pagination:
