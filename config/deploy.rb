@@ -58,7 +58,7 @@ task :dev do
   set :deploy_to, "/var/www/#{application}/dev"
   after 'deploy:update_code', 'migrate_reset' # drop, create, migrate
   after 'deploy:update_code', 'fix_permissions'
-  after 'migrate_reset', 'fix_dev_permissions'
+  after 'migrate_reset', 'chown_folder'
   after 'migrate_reset', 'seed'
   after 'deploy:restart', 'deploy:cleanup'
 end
@@ -73,7 +73,7 @@ namespace :deploy do
 end
 
 desc 'Fix sqlite file permissions for development'
-task :fix_dev_permissions do
+task :chown_folder do
   run "cd #{release_path}; chown -R www-data:www-data ."
 end
 
@@ -87,7 +87,7 @@ end
 
 desc 'Reset the database and run migrations'
 task :migrate_reset do
-  remove_system_folder
+  # remove_system_folder uncomment if using paperclip
   run "cd #{release_path}; bundle exec rake db:migrate:reset RAILS_ENV=#{rails_env} --trace"
 end
 
