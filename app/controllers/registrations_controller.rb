@@ -1,5 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  # This controller overrides the default devise registration controller
+  # with our authentication logic.
+
   def create
     # Remove omniauth data from session after successful registration
     super
@@ -18,7 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     if successfully_updated
-      # Sign in the user bypassing validation in case his password changed
+      # Sign in the user bypassing validation in case their password changed
       sign_in @user, bypass: true
       redirect_to root_path
     else

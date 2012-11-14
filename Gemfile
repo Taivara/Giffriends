@@ -11,6 +11,9 @@ gem 'devise-i18n-views', '~> 0.2.2'
 gem 'omniauth', '~> 1.1.1'
 gem 'omniauth-facebook', '~> 1.4.1'
 gem 'omniauth-twitter', '~> 0.0.13'
+gem 'kaminari', '~> 0.14.1'
+gem 'ransack', '~> 0.7.0'
+gem 'capistrano', '~> 2.13.5'
 
 group :testing do
   gem 'factory_girl_rails', '~> 4.0'
