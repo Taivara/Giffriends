@@ -11,6 +11,8 @@ class AuthenticationsControllerTest < ActionController::TestCase
   # test "should create authentication" do
   # end
 
+  # Todo Add authorization tests for delete
+
   test 'should destroy authentication' do
     sign_in @user
 
