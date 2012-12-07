@@ -1,5 +1,5 @@
 class Role < ActiveRecord::Base
-  attr_accessible :type
+  attr_accessible :name
 
   validates :name, presence: true
 
