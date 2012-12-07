@@ -1,0 +1,12 @@
+[submodule "vendor/Modernizr/Modernizr"]
+	path = vendor/Modernizr/Modernizr
+	url = git://github.com/Modernizr/Modernizr.git
+[submodule "vendor/documentcloud/backbone"]
+	path = vendor/documentcloud/backbone
+	url = git://github.com/documentcloud/backbone.git
+[submodule "vendor/documentcloud/underscore"]
+	path = vendor/documentcloud/underscore
+	url = git://github.com/documentcloud/underscore.git
+[submodule "vendor/SlexAxton/yepnope.js"]
+	path = vendor/SlexAxton/yepnope.js
+	url = git://github.com/SlexAxton/yepnope.js.git
