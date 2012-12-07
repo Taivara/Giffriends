@@ -1,8 +1,10 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user, html: { multipart: true } do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
+    <div>
+      <h2>
+        <%= pluralize(@user.errors.count, 'error') %>
+        prohibited this user from being saved:
+      </h2>
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,7 +13,69 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div>
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
   </div>
+
+  <div>
+    <%= image_tag @user.profile_picture.url(:thumb) %><br />
+    <%= f.label :profile_picture %><br />
+    <%= f.file_field :profile_picture %>
+  </div>
+
+  <div><%= f.label :password %>
+    <i>(<%= t(:leave_blank_if_changing) %>)</i>
+    <br/>
+    <%= f.password_field :password, autocomplete: :off %>
+  </div>
+
+  <div><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %></div>
+
+  <div>
+    <%= f.label :current_password %>
+    <i>(<%= t(:if_you_are_changing) %>)</i>
+    <br/>
+    <%= f.password_field :current_password %>
+  </div>
+
+  <div><%= f.submit t(:update) %></div>
 <% end %>
+
+
+<% if @user.authentications %>
+  <% unless @user.authentications.empty? %>
+    <table>
+      <caption><%= t(:you_can_sign_in_with_these_accounts) %></caption>
+      <thead>
+      <th><%= t('activerecord.attributes.authentication.provider') %></th>
+      <th>ID</th><th></th></thead>
+      <tbody>
+      <% for authentication in @user.authentications %>
+        <tr>
+          <td><%= authentication.provider.titleize %></td>
+          <td><%= authentication.uid %></td>
+          <td><%= link_to t(:delete), authentication,
+                          data: { confirm: t(:are_you_sure) },
+                          method: :delete %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  <p><strong><%= t(:add_another_service) %></strong></p>
+<% else %>
+  <p><strong><%= t(:sign_in_with_a_service) %></strong></p>
+<% end %>
+
+<ul>
+  <li><%= link_to t(:sign_in_twitter), '/auth/twitter' %></li>
+  <li><%= link_to t(:sign_in_facebook), '/auth/facebook' %></li>
+</ul>
+
+<h3><%= t(:cancel_my_account) %></h3>
+
+<p><%= link_to t(:cancel_my_account), registration_path(@user),
+               data: { confirm: t(:are_you_sure) },
+               method: :delete %>.</p>
