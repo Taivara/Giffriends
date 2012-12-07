@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :current_password
 
-  has_many :authentications
-  has_many :roles
+  has_many :authentications, dependent: :destroy
+  has_many :roles, dependent: :destroy
 
   has_attached_file :profile_picture,
                       styles: { medium: '300x300#', thumb: '100x100#' },
