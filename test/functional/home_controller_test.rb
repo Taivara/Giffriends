@@ -2,7 +2,7 @@ require 'test_helper'
 
 class HomeControllerTest < ActionController::TestCase
 
-  test "should get index" do
+  test 'should get index' do
     get :index
     assert_response :success
   end
@@ -43,7 +43,7 @@ class HomeControllerTest < ActionController::TestCase
     get :index
     assert_select "a[href=#{new_user_registration_path}]", false
     assert_select "a[href=#{new_user_session_path}]", false
-    assert_select "a[href=#{edit_user_registration_path}]", true
+    assert_select "a[href=#{edit_user_path(user)}]", true
     assert_select "a[href=#{destroy_user_session_path}]", true
     assert_select 'nav strong', user.email
   end

@@ -7,17 +7,17 @@ class AuthenticationsControllerTest < ActionController::TestCase
     @user = @authentication.user
   end
 
-  # Create should probably have a test...
-  #test "should create authentication" do
-  #end
+  # Todo Add test for create method
+  # test "should create authentication" do
+  # end
 
-  test "should destroy authentication" do
+  test 'should destroy authentication' do
     sign_in @user
 
     assert_difference('Authentication.count', -1) do
       delete :destroy, id: @authentication
     end
 
-    assert_redirected_to edit_user_registration_url
+    assert_redirected_to edit_user_url(@user)
   end
 end

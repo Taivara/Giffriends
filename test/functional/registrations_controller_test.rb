@@ -1,7 +1,5 @@
 require 'test_helper'
 
 class RegistrationsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  # Todo add test for overridden create method
 end
