@@ -59,12 +59,22 @@ module Trails
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    # Configure vendor paths
+    config.assets.paths << Rails.root.join('vendor', 'documentcloud')
+    config.assets.paths << Rails.root.join('vendor', 'Modernizr')
+    config.assets.paths << Rails.root.join('vendor', 'SlexAxton')
+    # config.assets.paths << Rails.root.join('vendor', 'freqdec')
+
+    # Individual files to include for polyfills/shims
+    # config.assets.precompile += %w( fd-slider/js/fd-slider.js )
+    # config.assets.precompile += %w( fd-slider/css/fd-slider.css )
+
     # Configure default generators
     config.generators do |g|
       g.stylesheets false
       g.javascripts false
       g.helper false
-      g.fixture_replacement :factory_girl
+      g.test_framework  :test_unit, fixture_replacement: :factory_girl
     end
 
   end
