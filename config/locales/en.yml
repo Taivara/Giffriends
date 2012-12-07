@@ -3,8 +3,12 @@ en:
   update: "Update"
   show: "Show"
   edit: "Edit"
+  new: "New %{model}"
   search: "Search"
   are_you_sure: "Are you sure?"
+  created: "%{model} created successfully"
+  updated: "%{model} updated successfully"
+  save_error: "prohibited this %{model} from being saved:"
   views:
     pagination:
       previous: "Previous"

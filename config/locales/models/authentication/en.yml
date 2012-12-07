@@ -1,5 +1,7 @@
 en:
   activerecord:
+    models:
+      authentication: "Authentication"
     attributes:
       authentication:
         provider: "Provider"
