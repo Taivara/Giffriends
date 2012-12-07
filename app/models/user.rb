@@ -13,6 +13,14 @@ class User < ActiveRecord::Base
   has_many :authentications
   has_many :roles
 
+  has_attached_file :profile_picture,
+                      styles: { medium: '300x300#', thumb: '100x100#' },
+                      default_url: '/missing-:style.png'
+
+  def admin?
+    roles.where(name: :admin).any?
+  end
+
   # Helper for user creation via omniauth
   def apply_omniauth(omniauth)
     authentications.build(provider: omniauth['provider'], uid: omniauth['uid'])
