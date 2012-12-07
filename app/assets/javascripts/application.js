@@ -10,6 +10,16 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require Modernizr/modernizr
+//= require yepnope.js/yepnope
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require i18n
+//= require i18n/translations
+//= require underscore/underscore
+//= require backbone/backbone
+//= require namespace
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./templates
+//= require_tree ./views
