@@ -11,7 +11,7 @@ class AuthenticationsController < ApplicationController
       current_user.authentications.create(
         provider: omniauth[:provider], uid: omniauth[:uid])
       flash[:notice] = t(:authentication_successfull)
-      redirect_to edit_user_registration_url
+      redirect_to edit_user_url(current_user)
     else
       user = User.new
       user.apply_omniauth(omniauth)
@@ -29,6 +29,6 @@ class AuthenticationsController < ApplicationController
     @authentication = current_user.authentications.find(params[:id])
     @authentication.destroy
     flash[:notice] = t(:successfully_removed_authentication)
-    redirect_to edit_user_registration_url
+    redirect_to edit_user_url(current_user)
   end
 end
