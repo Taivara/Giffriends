@@ -5,18 +5,13 @@ require 'bundler/capistrano' # Run bundle install on deploy
 # For paperclip, make sure to set public/system to mode 777
 
 set :application, 'trails'
-set :user, 'root' # Should probably be another user
-set :domain, '0.0.0.0'
+set :use_sudo, true
 set :scm, :git
 set :repository, "git@github.com:Taivara/#{application}.git"
 set :git_enable_submodules, 1 # Will update and init submodules recursively
 #set :git_shallow_clone, 1 # Only clone top commit, dont use with remote cache
 set :scm_verbose, true # Print git terminal messages
 set :deploy_via, :remote_cache # keeps a repo on the deploy machine
-
-role :web, domain  # Your HTTP server, Apache/etc
-role :app, domain  # This may be the same as your `Web` server
-role :db,  domain, primary: true # This is where Rails migrations will run
 
 task :cert do
   set :bundle_without, [:test, :development]
@@ -52,10 +47,23 @@ task :prod do
 end
 
 task :dev do
+
+  set :default_environment, {
+    'PATH' => "/usr/lib/ruby/gems/1.9.1:$PATH"
+  }
+
+  set :user, 'deployment'
+  set :domain, 'dev.taivara.com'
+  set :use_sudo, true
+
+  role :web, domain  # Your HTTP server, Apache/etc
+  role :app, domain  # This may be the same as your 'Web' server
+  role :db,  domain, primary: true # This is where Rails migrations will run
+
   set :bundle_without, [:test]
   set :rails_env, 'development'
   set :branch, 'develop'
-  set :deploy_to, "/var/www/#{application}/dev"
+  set :deploy_to, "/var/www/taivara/#{application}/dev"
   after 'deploy:update_code', 'migrate_reset' # drop, create, migrate
   after 'deploy:update_code', 'fix_permissions'
   after 'migrate_reset', 'chown_folder'
@@ -74,20 +82,20 @@ end
 
 desc 'Fix sqlite file permissions for development'
 task :chown_folder do
-  run "cd #{release_path}; chown -R www-data:www-data ."
+  run "cd #{release_path}; #{sudo} chown -R www-data:www-data . ; #{sudo} chmod -R 0777 db"
 end
 
 desc 'Fix file permissions'
 task :fix_permissions do
-  run "find #{release_path}/public -type d -exec chmod 0755 {} \\;"
-  run "find #{release_path}/public -type f -exec chmod 0644 {} \\;"
-  run "chmod -R 0777 #{release_path}/tmp"
-  run "chmod -R 0777 #{release_path}/public/system"
+  run "#{sudo} find #{release_path}/public -type d -exec chmod 0755 {} \\;"
+  run "#{sudo} find #{release_path}/public -type f -exec chmod 0644 {} \\;"
+  run "#{sudo} chmod -R 0777 #{release_path}/tmp"
+  run "#{sudo} chmod -R 0777 #{release_path}/public/system"
 end
 
 desc 'Reset the database and run migrations'
 task :migrate_reset do
-  # remove_system_folder uncomment if using paperclip
+  remove_system_folder
   run "cd #{release_path}; bundle exec rake db:migrate:reset RAILS_ENV=#{rails_env} --trace"
 end
 
@@ -98,7 +106,7 @@ end
 
 desc 'Remove old paperclip image upload folder when adding seed data'
 task :remove_system_folder do
-  run "rm -rf #{release_path}/public/system"
+  run "#{sudo} rm -rf #{release_path}/public/system"
 end
 
 desc 'Pre-compiles sprockets assets'
