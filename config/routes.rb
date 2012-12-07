@@ -1,7 +1,9 @@
 Trails::Application.routes.draw do
 
   match '/auth/:provider/callback' => 'authentications#create'
-  devise_for :users, controllers: { registrations: 'registrations'}
+  devise_for :users, controllers: { registrations: 'registrations'}, path: '/',
+               path_names: {  sign_in: 'sessions/new',
+                              sign_out: 'sessions/destroy' }
   resources :authentications
   resources :users
 
