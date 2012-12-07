@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  before_filter :authenticate_user!
+  load_and_authorize_resource :user
+
   # GET /users
   # GET /users.json
   def index
@@ -30,14 +34,24 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
+
     @user = User.find(params[:id])
+
+    # Password is not required unless updating password itself
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        sign_in @user, bypass: true
+        format.html {
+          redirect_to @user, notice: t(:updated,  model: User.model_name.human)
+        }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
