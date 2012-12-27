@@ -28,6 +28,7 @@ group :testing, :development do
   gem 'rb-fsevent', '~> 0.9.1'
   gem 'jasminerice', '~> 0.0.10'
   gem 'guard-jasmine', '~> 1.10.1'
+  gem 'rake'
 end
 
 # Gems used only for assets and not required
