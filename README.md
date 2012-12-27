@@ -1,5 +1,7 @@
 == Welcome to TRails
 
+[![Build Status](https://magnum.travis-ci.com/Taivara/TRails.png?token=DY98q3WXgUtX5SM4wHkT)](http://magnum.travis-ci.com/Taivara/TRails)
+
 Trails is Taivara's quick-start rails setup. (Taivara + Rails = Trails,
 so clever, right?). The following describes what is contained in a default
 setup as well as some general guidelines and best practices.
