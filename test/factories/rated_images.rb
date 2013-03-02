@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :rated_image, :class => 'RatedImages' do
-    image nil
+    image 
     status 1
   end
 end
