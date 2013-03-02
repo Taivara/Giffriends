@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302193303) do
+ActiveRecord::Schema.define(:version => 20130302195610) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(:version => 20130302193303) do
   end
 
   add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
+
+  create_table "matches", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "match_id"
+    t.boolean  "interested"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "matches", ["match_id"], :name => "index_matches_on_match_id"
+  add_index "matches", ["user_id"], :name => "index_matches_on_user_id"
 
   create_table "roles", :force => true do |t|
     t.integer  "user_id"
