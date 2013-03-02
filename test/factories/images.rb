@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :image do
-    imgur_id 1
+    imgur_id 'wrt45' 
   end
 end
