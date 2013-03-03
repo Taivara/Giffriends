@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+
+  has_many :messages_inbox, class_name: Message, :foreign_key => :to
+  has_many :messages_outbox, class_name: Message, :foreign_key => :from
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

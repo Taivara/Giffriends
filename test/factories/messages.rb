@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :message do
-    text "MyText"
-    to 1
-    from 1
+    text "Ponies and butterflies"
+    to nil
+    from nil
   end
 end

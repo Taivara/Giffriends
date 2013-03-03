@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302195610) do
+ActiveRecord::Schema.define(:version => 20130302202132) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(:version => 20130302195610) do
 
   add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
 
+  create_table "images", :force => true do |t|
+    t.integer  "imgur_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "matches", :force => true do |t|
     t.integer  "user_id"
     t.integer  "match_id"
@@ -33,6 +39,23 @@ ActiveRecord::Schema.define(:version => 20130302195610) do
 
   add_index "matches", ["match_id"], :name => "index_matches_on_match_id"
   add_index "matches", ["user_id"], :name => "index_matches_on_user_id"
+
+  create_table "messages", :force => true do |t|
+    t.text     "text"
+    t.integer  "to"
+    t.integer  "from"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "rated_images", :force => true do |t|
+    t.integer  "image_id"
+    t.integer  "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "rated_images", ["image_id"], :name => "index_rated_images_on_image_id"
 
   create_table "roles", :force => true do |t|
     t.integer  "user_id"
