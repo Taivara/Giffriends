@@ -3,7 +3,7 @@ class CreateMatches < ActiveRecord::Migration
     create_table :matches do |t|
       t.references :user
       t.integer :match_id
-      t.boolean :interested
+      t.integer :interested
 
       t.timestamps
     end
