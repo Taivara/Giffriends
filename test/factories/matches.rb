@@ -3,7 +3,6 @@
 FactoryGirl.define do
   factory :match do
     user
-    match_id 1
-    interested true
+    interested 1
   end
 end
